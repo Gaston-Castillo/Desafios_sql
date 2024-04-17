@@ -1,7 +1,7 @@
 const { where } = require("sequelize");
 const db = require("../database/models")
 const {Op} = db.Sequelize
-// const Movies = db.Movie;
+const Movies = db.Movie;
 module.exports = {
   list: (req,res) => {
 
@@ -80,11 +80,11 @@ module.exports = {
 
   
   //Aqui debemos modificar y completar lo necesario para trabajar con el CRUD
-  add: (req, res) => {
+  add: function (req, res) {
     res.render('admin/moviesAdd');
 },
-create: (req, res)=> {
-        db.Movie.create({
+create: function (req, res) {
+        Movies.create({
         title: req.body.title,
         rating: req.body.rating,
         awards: req.body.awards,
@@ -92,17 +92,22 @@ create: (req, res)=> {
         length: req.body.length
     })
 
-    res.redirect('movies');
-    
+    res.redirect('/movies');
+    // .then((movie)=> {res.redirect('/movies',movie});
 },
-edit: (req, res) =>{
-    db.Movie.findByPk(req.params.id)
-    .then(Movie => {
-        res.render('admin/moviesEdit', {Movie:Movie});
-    })
+
+edit: (req, res)=> {
+  const id = req.params.id; 
+  db.Movie.findByPk(id)
+      .then(movie => {
+          res.render('admin/moviesEdit', { movie });
+      })
+      .catch((err) => {
+          console.log("ESTO ES ERROR-----------",err.message);
+      });
 },
-update: (req,res)=> {
-   db.Movie.update({
+update: function (req,res) {
+    Movies.update({
     title: req.body.title,
     rating: req.body.rating,
     awards: req.body.awards,
@@ -115,19 +120,21 @@ update: (req,res)=> {
   id:req.params.id}
   }
 )
-
-res.redirect('/movies/edit/' + req.params.id);
+.then( movies => {
+res.redirect('/movies/detail/' + req.params.id );
+})
 },
-delete:  (req, res)=> {
-    db.Movie.destroy({
-      where: {
-        id: req.params.id
-      }
-    })
+delete: function (req, res) {
+  Movies.destroy({
+    where: {
+      id: req.params.id
+    }
+  })
+  .then( movies => {
     res.redirect('/movies' );
+})
+
 },
 
 
 }
-
-

@@ -11,5 +11,7 @@ router.get('/movies/add', moviesController.add);
 router.post('/movies/add', moviesController.create);
 router.get('/movies/edit/:id', moviesController.edit);
 router.post('/movies/edit/:id', moviesController.update);
+router.get('/movies/delete/:id', moviesController.delete);
 router.post('/movies/delete/:id', moviesController.delete);
+
 module.exports = router;

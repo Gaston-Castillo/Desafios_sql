@@ -7,11 +7,12 @@
     <link rel='stylesheet' href='/css/style.css' />
 
 </head>
-<%- include("./partials/header") %>
+
 <body>
     <figure>
         <img src="/img/logo-DH.png" alt="Logo Digital House">
-    </figure>    
+    </figure>  
+    <%- include("./partials/header") %>
     <h1><%= actor.last_name %> <%= actor.first_name %>  </h1>
     <br>
     <p>Nombre y Apellido: <%= actor.last_name %> <%= actor.first_name %> </p>

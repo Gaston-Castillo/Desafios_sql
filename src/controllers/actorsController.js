@@ -1,21 +1,3 @@
-// const db = require("../database/models");
-
-// module.exports  = {
-// list: (req,res) => {
-//     db.Actor.findAll()
-//     .then((actors) => {
-//         res.render("actorsList",{actors})
-//     })
-//     .catch(err => {
-//     res.send(err.message) 
-//     })
-// },
-// detail: (req, res) => {
-//     db.Actor.findByPk(req.params.id)
-//       .then(function (actor) {
-//         res.render("actorsDetail", { actor });
-//       })
-//       .catch((err) =const db = require("../database/models")
 const db = require("../database/models");
 const {Op} = db.Sequelize
 module.exports = {
@@ -35,7 +17,7 @@ module.exports = {
   }) 
   
 },
- detail: (req,res) => {
+  detail: (req,res) => {
   const{id} = req.params
   db.Actor.findByPk(id)
   .then((actor) => { res.render("actorsDetail",{
@@ -46,6 +28,18 @@ module.exports = {
     res.send(err.message)
   }) 
 },
+// add: function (req, res) {
+//   res.render('admin/actorsAdd');
+// },
+// create: function (req, res) {
+//  Actor.create({
+//   first_name: req.body.first_name,
+//   last_name: req.body.last_name,
+//   rating: req.body.rating,
+ 
+// })
+
+// res.redirect('/actors');
 }
 
 

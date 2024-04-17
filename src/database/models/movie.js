@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     title: {
       type: DataTypes.STRING,
-      allowNull: false,
+      // allowNull: false,
     },
     rating: {
       type: DataTypes.DECIMAL(3, 1),
@@ -29,31 +29,34 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER
     },
   };
-
   const config = {
     timestamps: true,
     tableName: "movies",
-/*  createdAt: "created_at",
-    updatedAt: "updated_at" */
+    createdAt: "created_at",
+    updatedAt: "updated_at",
     underscored: true
   };
 
   const Movie = sequelize.define(alias, cols, config);
-  // Movie.associate = function(models){
-  //   Movie.belongsTo(models.Genre,{
-  //     as:"genres",
-  //     foreignKey:"genre_id"
-  //   });
+  return Movie;
+
+
+//   const Movie = sequelize.define(alias, cols, config);
+//   // Movie.associate = function(models){
+//   //   Movie.belongsTo(models.Genre,{
+//   //     as:"genres",
+//   //     foreignKey:"genre_id"
+//   //   });
 
     
-  //   Actor.belongsToMany(models.Actor, {
-  //     as:"actors",
-  //     through: "actor_movie",
-  //     foreignKey: "movie_id",
-  //     otherKey: "actor_id",
-  //     timestamps: false,
-  // });
+//   //   Actor.belongsToMany(models.Actor, {
+//   //     as:"actors",
+//   //     through: "actor_movie",
+//   //     foreignKey: "movie_id",
+//   //     otherKey: "actor_id",
+//   //     timestamps: false,
+//   // });
     
-  // }
-  return Movie;
+//   // }
+//   return Movie;
 };

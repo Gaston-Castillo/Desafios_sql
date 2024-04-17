@@ -1,6 +1,6 @@
 const express = require('express');
 const path = require('path');
-
+const port = 3001;
 const indexRouter = require('./routes/index');
 const bodyParser = require('body-parser');
 
@@ -22,4 +22,4 @@ app.use(moviesRoutes);
 app.use(genresRoutes);
 app.use(actorsRoutes);
 
-app.listen('3001', () => console.log('Servidor corriendo en el puerto 3001'));
+app.listen(port, () => (console.log(`http://localhost:${port}`)));

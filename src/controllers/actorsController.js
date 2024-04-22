@@ -47,7 +47,7 @@ create: (req, res) => {
 })
 
 .then(actor=>{
-  res.rediret('/actors/add',{actor});
+  res.redirect('/actors');
   
 })
 .catch((err) => {

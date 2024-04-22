@@ -13,7 +13,7 @@ text-decoration: none;
 }
 
 a {
-  color: #e6e6f5;
+  color:black
 }
 img{
   width: 100%;
@@ -25,7 +25,7 @@ body {
   font-family: "Roboto Mono", monospace;
   text-align: center;
   /* background-image: url("https://i.pinimg.com/474x/ae/a5/54/aea55436fe267cdb3f67718a38613170.jpg"); */
-  background-image: url("https://caelum-online-public.s3.amazonaws.com/assets-imersaodev/background-aluraflix.png");
+  /* background-image: url("https://caelum-online-public.s3.amazonaws.com/assets-imersaodev/background-aluraflix.png"); */
   background-color: #ecdede;
   background-size: cover;
   background-position: center top;
@@ -73,6 +73,6 @@ img {
     position: absolute;
     top: 0;
     left: 0;
-    background: url(/assets/img/imersoes/dev-2023/letras-alura.1686744883.svg) no-repeat center / cover;
-    animation: loading 30s linear infinite;
+    /* background: url(/assets/img/imersoes/dev-2023/letras-alura.1686744883.svg) no-repeat center / cover; */
+    /* animation: loading 30s linear infinite; */
 }

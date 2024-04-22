@@ -135,6 +135,12 @@ delete: function (req, res) {
 })
 
 },
+//  destroy:  function(req ,res){
+// const {id} =res.params
+// db.Movie.destroy({
+//   Where:{id}
+// }).then(respuesta=>{res=>res,rediirect('/')})
 
-
+ 
+// }
 }

@@ -1,4 +1,5 @@
 const db = require("../database/models");
+const movie = require("../database/models/actor");
 const {Op} = db.Sequelize
 module.exports = {
   list:(req,res) => {
@@ -28,19 +29,32 @@ module.exports = {
     res.send(err.message)
   }) 
 },
-// add: function (req, res) {
-//   res.render('admin/actorsAdd');
-// },
-// create: function (req, res) {
-//  Actor.create({
-//   first_name: req.body.first_name,
-//   last_name: req.body.last_name,
-//   rating: req.body.rating,
- 
-// })
+add:  (req, res) => {
+db.Actor.findAll()
+.then(actor=>{
+    res.render('actorsAdd',{actor});
+  
+})
+.catch((err) => {
+  res.send(err.message)
+}) 
+},
+create: (req, res) => {
+ db.Actor.create({
+  first_name: req.body.first_name,
+  last_name: req.body.last_name,
+  rating: req.body.rating,
+})
 
-// res.redirect('/actors');
+.then(actor=>{
+  res.rediret('/actors/add',{actor});
+  
+})
+.catch((err) => {
+  res.send(err.message)
+}) 
+console.log("esto traer req body name----.-----",req.body)
 }
 
 
-
+}

@@ -2,6 +2,7 @@ const { where } = require("sequelize");
 const db = require("../database/models")
 const {Op} = db.Sequelize
 const Movies = db.Movie;
+const Genres = db.Genre;
 module.exports = {
   list: (req,res) => {
 
@@ -81,7 +82,11 @@ module.exports = {
   
   //Aqui debemos modificar y completar lo necesario para trabajar con el CRUD
   add: function (req, res) {
-    res.render('admin/moviesAdd');
+    Genres.findAll()
+    .then(genres=>{
+
+      res.render('admin/moviesAdd', {genres});
+    })
 },
 create: function (req, res) {
         Movies.create({
@@ -89,7 +94,8 @@ create: function (req, res) {
         rating: req.body.rating,
         awards: req.body.awards,
         release_date: req.body.release_date,
-        length: req.body.length
+        length: req.body.length,
+        genre_id: req.body.genre_id
     })
 
     res.redirect('/movies');
